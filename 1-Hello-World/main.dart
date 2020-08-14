@@ -3,8 +3,8 @@ void main(){
 
   print('Hello World!');
   
-  var nombre = "World";
+  String nombre = "World";
 
- print('Hello $nombre');
- 
+  print('Hello $nombre');
+
  }
