@@ -34,7 +34,7 @@ class _CounterPageState extends State<CounterPage> {
             ),
             Text(
               '$_counter',
-              style: _estiloTexto,
+              style: TextStyle(fontSize: 100),
             ),
           ],
         )),
