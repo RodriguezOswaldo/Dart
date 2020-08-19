@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:other_app/src/providers/menu_providers.dart';
 
 class HomePage extends StatelessWidget {
   @override
@@ -12,6 +13,7 @@ class HomePage extends StatelessWidget {
   }
 
   Widget _lista() {
+    print(menuProvider.options);
     return ListView(
       children: _itemLists(),
     );
@@ -19,6 +21,18 @@ class HomePage extends StatelessWidget {
 
   List<Widget> _itemLists() {
     return [
+      ListTile(title: Text('Hello World')),
+      Divider(
+        height: 4.0,
+        color: Colors.blue[100],
+        thickness: 1.5,
+      ),
+      ListTile(title: Text('Hello World')),
+      Divider(
+        height: 4.0,
+        color: Colors.blue[100],
+        thickness: 1.5,
+      ),
       ListTile(title: Text('Hello World')),
       Divider(
         height: 4.0,
