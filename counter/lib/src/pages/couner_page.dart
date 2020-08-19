@@ -9,7 +9,7 @@ class _CounterPageState extends State<CounterPage> {
   //style text class
   final _estiloTexto = new TextStyle(fontSize: 25);
   //Counter keeper
-  final _counter = 10;
+  int _counter = 0;
 
   @override
   Widget build(BuildContext context) {
@@ -38,15 +38,51 @@ class _CounterPageState extends State<CounterPage> {
             ),
           ],
         )),
-        floatingActionButton: FloatingActionButton(
-          backgroundColor: Color.fromRGBO(223, 123, 123, 123),
-          child: Icon(
-            Icons.add,
-            color: Color.fromRGBO(35, 23, 233, 100),
-          ),
-          onPressed: () {
-            print('Hello World');
-          },
-        ));
+        floatingActionButton: _createButtons());
+  }
+
+  Widget _createButtons() {
+    return Row(
+      mainAxisAlignment: MainAxisAlignment.center,
+      children: <Widget>[
+        SizedBox(
+          width: 30,
+        ),
+        FloatingActionButton(
+          child: Icon(Icons.adjust),
+          onPressed: _clean,
+          backgroundColor: Color.fromARGB(23, 23, 23, 233),
+        ),
+        Expanded(child: SizedBox()),
+        //removebutton
+        FloatingActionButton(
+          child: Icon(Icons.remove_circle),
+          onPressed: _remove,
+          backgroundColor: Color.fromARGB(23, 23, 23, 233),
+        ),
+        SizedBox(
+          width: 5.0,
+        ),
+        //addbutton
+        FloatingActionButton(
+          child: Icon(Icons.add_circle),
+          onPressed: _add,
+          backgroundColor: Color.fromARGB(23, 23, 23, 233),
+        ),
+      ],
+    );
+  }
+
+  void _add() {
+    //update the state of the counter
+    setState(() => _counter++);
+  }
+
+  void _remove() {
+    setState(() => _counter--);
+  }
+
+  void _clean() {
+    setState(() => _counter = 0);
   }
 }
