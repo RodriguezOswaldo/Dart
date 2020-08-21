@@ -8,4 +8,5 @@ final _icons = <String, IconData>{
 
 Icon getIcon(String iconName) {
   return Icon(_icons['iconName'], color: Colors.blue[300]);
+  // A comment
 }
