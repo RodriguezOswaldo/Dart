@@ -13,32 +13,33 @@ class HomePage extends StatelessWidget {
   }
 
   Widget _lista() {
-    print(menuProvider.options);
-    return ListView(
-      children: _itemLists(),
+    // print(menuProvider.options);
+    // menuProvider.loadData().then((options)
+    return FutureBuilder(
+      future: menuProvider.loadData(),
+      // initialData: [],
+      builder: (context, AsyncSnapshot<List<dynamic>> snapshot) {
+        // print('builder');
+        // print();
+        return ListView(
+          children: _itemLists(snapshot.data),
+        );
+      },
     );
   }
+}
 
-  List<Widget> _itemLists() {
-    return [
-      ListTile(title: Text('Hello World')),
-      Divider(
-        height: 4.0,
-        color: Colors.blue[100],
-        thickness: 1.5,
-      ),
-      ListTile(title: Text('Hello World')),
-      Divider(
-        height: 4.0,
-        color: Colors.blue[100],
-        thickness: 1.5,
-      ),
-      ListTile(title: Text('Hello World')),
-      Divider(
-        height: 4.0,
-        color: Colors.blue[100],
-        thickness: 1.5,
-      ),
-    ];
-  }
+List<Widget> _itemLists(List<dynamic> data) {
+  final List<Widget> opciones = [];
+
+  data.forEach((opt) {
+    final widgetTemp = ListTile(
+      title: Text(opt['texto']),
+      leading: Icon(Icons.accessible_forward, color: Colors.lightGreenAccent),
+      trailing: Icon(Icons.keyboard_arrow_right, color: Colors.blueAccent),
+      onTap: () {},
+    );
+    opciones..add(widgetTemp)..add(Divider());
+  });
+  return opciones;
 }
